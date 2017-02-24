@@ -10,35 +10,24 @@ namespace HashingProgram
 {
     public class Decrypting
     {
+        Encrypting encrypting = new Encrypting();
         public string Decrypt(string encrypt)
         {
             string decrypt;
             byte[] y = Encoding.UTF8.GetBytes(encrypt);
             using (Rijndael rijndael = new RijndaelManaged())
             {
-                rijndael.GenerateKey();
-                rijndael.GenerateIV();
-                decrypt = DecryptStringFromBytes(y, rijndael.Key, rijndael.IV);
+                decrypt = DecryptStringFromBytes(y, encrypting.Rijndael.Key, encrypting.Rijndael.IV);
             }
             return decrypt;
         }
 
 
-        public string DecryptStringFromBytes(byte[] encryptText, byte[] Key, byte[] IV)
+        public string DecryptStringFromBytes(byte[] encryptText,byte[] Key, byte[] IV)
         {
                 if (encryptText == null || encryptText.Length <= 0)
                 {
                     throw new ArgumentNullException("encryptText");
-                }
-
-                if (Key == null || Key.Length <= 0)
-                {
-                    throw new ArgumentNullException("Key");
-                }
-
-                if (IV == null || IV.Length <= 0)
-                {
-                    throw new ArgumentNullException("IV");
                 }
 
                 string decrypt = null;

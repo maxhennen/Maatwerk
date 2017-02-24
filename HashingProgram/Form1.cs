@@ -32,5 +32,10 @@ namespace HashingProgram
         {
             tbEncrypt.Text = decrypting.Decrypt(encrypting.Encrypt(tbDecrypt.Text));
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
