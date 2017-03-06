@@ -8,9 +8,9 @@ namespace BattleSim
 {
     public class Spell
     {
-        private string Naam;
-        private int Power;
-        private int ManaCost;
+        public string Naam { get; private set; }
+        public int Power { get; private set; }
+        public int ManaCost { get; private set; }
 
         public Spell(string naam, int power, int manaCost)
         {

@@ -8,8 +8,8 @@ namespace BattleSim
 {
     public class Weapon
     {
-        private string Naam;
-        private int MaxHitDamage;
+        public string Naam { get; private set; }
+        public int MaxHitDamage { get; private set; }
 
         public Weapon(string naam, int maxHitDamage)
         {

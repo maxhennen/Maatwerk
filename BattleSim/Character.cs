@@ -8,8 +8,8 @@ namespace BattleSim
 {
     public abstract class Character
     {
-        private string Naam;
-        private int HitPoints;
+        public string Naam { get; private set; }
+        public int HitPoints { get; private set; }
 
         public Character(string naam, int hitPoints)
         {
@@ -17,15 +17,9 @@ namespace BattleSim
             HitPoints = hitPoints;
         }
 
-        public int DealDamage()
-        {
-            
-        }
+        public abstract int DealDamage();
 
-        public void ReceiveDamage(int damage)
-        {
-            
-        }
+        public abstract void ReceiveDamage(int damage);
 
         public void EquipWeapon(Weapon weapon)
         {
