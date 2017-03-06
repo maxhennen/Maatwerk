@@ -18,7 +18,6 @@ namespace CookieKlikker
         private Upgrade bakker;
         private Upgrade oven;
         private Upgrade deegroller;
-        private Encrypting encrypting;
         public Form1()
         {
             InitializeComponent();
@@ -26,7 +25,6 @@ namespace CookieKlikker
             bakker = new Upgrade("Bakker", 10, 100, 150);
             oven = new Upgrade("Oven",50,2000,450);
             deegroller = new Upgrade("Deegroller",0,3500,700);
-            encrypting = new Encrypting();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -109,12 +107,12 @@ namespace CookieKlikker
         private void Opslaan()
         {
             List<string> Lines = new List<string>();
-            Lines.Add(encrypting.Encrypt("Koekjes:" + Convert.ToString(koekjesController.Koekjes)));
-            Lines.Add(encrypting.Encrypt("Kps:" + Convert.ToString(koekjesController.Kps)));
-            Lines.Add(encrypting.Encrypt("KoekjesPerKlik: " + Convert.ToString(koekjesController.KoekjesPerKlik)));
-            Lines.Add(encrypting.Encrypt(bakker.Naam + ":" + bakker.Kps + ":" + bakker.Prijs + ":" + bakker.PrijsInterval));
-            Lines.Add(encrypting.Encrypt(oven.Naam + ":" + oven.Kps + ":" + oven.Prijs + ":" + oven.PrijsInterval));
-            Lines.Add(encrypting.Encrypt(deegroller.Naam + ":" + deegroller.Kps + ":" + deegroller.Prijs + ":" + deegroller.PrijsInterval));
+            Lines.Add(("Koekjes:" + Convert.ToString(koekjesController.Koekjes)));
+            Lines.Add("Kps:" + Convert.ToString(koekjesController.Kps));
+            Lines.Add("KoekjesPerKlik: " + Convert.ToString(koekjesController.KoekjesPerKlik));
+            Lines.Add(bakker.Naam + ":" + bakker.Kps + ":" + bakker.Prijs + ":" + bakker.PrijsInterval);
+            Lines.Add(oven.Naam + ":" + oven.Kps + ":" + oven.Prijs + ":" + oven.PrijsInterval);
+            Lines.Add(deegroller.Naam + ":" + deegroller.Kps + ":" + deegroller.Prijs + ":" + deegroller.PrijsInterval);
 
             try
             {
@@ -178,14 +176,14 @@ namespace CookieKlikker
 
         private int GegevensLaden(string txtGegevens)
         {
-            string gegevens = encrypting.Decrypt(txtGegevens);
+            string gegevens = txtGegevens;
             string[] substring = gegevens.Split(':');
             return Convert.ToInt32(substring[1]);
         }
         
         private Upgrade UpgradesLaden(string txtGegevens)
         {
-            string[] substring = encrypting.Decrypt(txtGegevens).Split(':');
+            string[] substring = txtGegevens.Split(':');
             Upgrade upgrade = new Upgrade(substring[0].ToString(),Convert.ToInt32(substring[1]),Convert.ToInt32(substring[2]),Convert.ToInt32(substring[3]));
             return upgrade;
         }
