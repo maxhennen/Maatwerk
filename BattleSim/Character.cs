@@ -10,6 +10,7 @@ namespace BattleSim
     {
         public string Naam { get; private set; }
         public int HitPoints { get; private set; }
+        public Weapon EquipedWeapon { get; private set; }
 
         public Character(string naam, int hitPoints)
         {
@@ -23,7 +24,7 @@ namespace BattleSim
 
         public void EquipWeapon(Weapon weapon)
         {
-            
+            EquipedWeapon = weapon;
         }
     }
 }
