@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace BakkerijGoedGeSpelt
 {
+    [Serializable]
     public class Brood
     {
         public string Beschrijving { get; private set; }
-        public BelegSoort SoortBeleg { get; private set; }  
+        public BelegSoort SoortBeleg { get; private set; }
         public double Prijs { get; private set; }
 
         public Brood(string beschrijving, BelegSoort soortBeleg, double prijs)

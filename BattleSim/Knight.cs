@@ -9,7 +9,6 @@ namespace BattleSim
     public class Knight : Character
     {
         private int ShieldPower;
-        private Weapon Weapon = new Weapon("Sword", 10);
 
 
         public Knight(string naam, int hitPoints) : base(naam, hitPoints)
@@ -20,7 +19,7 @@ namespace BattleSim
         public override int DealDamage()
         {
             Random r = new Random();
-            int damage = r.Next(0, Weapon.MaxHitDamage);
+            int damage = r.Next(0, EquipedWeapon.MaxHitDamage);
             return damage;
         }
 

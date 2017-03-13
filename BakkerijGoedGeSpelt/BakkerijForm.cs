@@ -14,7 +14,7 @@ namespace BakkerijGoedGeSpelt
 {
     public partial class bakkerijForm : Form
     {
-       
+        private  Bakkerij bakkerij = new Bakkerij("Bakker");
         public bakkerijForm()
         {
             InitializeComponent();
@@ -24,13 +24,18 @@ namespace BakkerijGoedGeSpelt
 
         private void bakkerijForm_Load(object sender, EventArgs e)
         {
-
+            foreach (Brood brood in bakkerij.LaadBroodsoortenUitBestand())
+            {
+                cbBroodSoorten.Items.Add(brood.Beschrijving);
+            }
         }
 
         private void btHaalBroodjesOp_Click(object sender, EventArgs e)
         {
-            Bakkerij b = new Bakkerij("ffss");
-            b.LaadBroodsoortenUitBestand();
+            foreach (Broodje broodje in bakkerij.HaalBroodjesOp())
+            {
+                lbBroodjes.Items.Add(broodje.Naam);
+            }
         }
     }
 }

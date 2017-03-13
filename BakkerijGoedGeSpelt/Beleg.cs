@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BakkerijGoedGeSpelt
 {
+    [Serializable]
     public class Beleg
     {
         public string  Beschrijving { get; private set; }
