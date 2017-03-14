@@ -40,12 +40,36 @@ namespace BakkerijGoedGeSpelt
         
         public void MaakPrijsLijst()
         {
-            
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.ShowDialog();
+            File.WriteAllText(saveFile.FileName, String.Empty);
+            using (FileStream fs = new FileStream(saveFile.FileName, FileMode.Append, FileAccess.Write))
+            {
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    foreach (Broodje broodje in HaalBroodjesOp())
+                    {
+                        sw.WriteLine(broodje.NaamEnPrijs(broodje.Naam,broodje.Prijs));
+                    }
+                }
+            }
         }
 
         public void SlaBroodjesOp()
         {
-            
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.ShowDialog();
+            File.WriteAllText(saveFile.FileName,string.Empty);
+            using (FileStream fs = new FileStream(saveFile.FileName, FileMode.Append, FileAccess.Write))
+            {
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    for (int i = 0; i < ToByteArray(HaalBroodjesOp()).Length; i++)
+                    {
+                        sw.WriteLine(ToByteArray(HaalBroodjesOp())[i]);
+                    }
+                }
+            }
         }
 
         public List<Broodje> HaalBroodjesOp()
@@ -56,8 +80,9 @@ namespace BakkerijGoedGeSpelt
         {
             byte[] bin = null;
             object obj = null;
-            
-                FileStream fs = new FileStream(file, FileMode.Open);
+
+            using (FileStream fs = new FileStream(file, FileMode.Open))
+            {
                 BinaryReader br = new BinaryReader(fs);
                 bin = br.ReadBytes(Convert.ToInt32(fs.Length));
                 using (MemoryStream ms = new MemoryStream())
@@ -67,7 +92,18 @@ namespace BakkerijGoedGeSpelt
                     ms.Seek(0, SeekOrigin.Begin);
                     obj = bf.Deserialize(ms);
                 }
+            }
             return (T)obj;
+        }
+
+        public byte[] ToByteArray(List<Broodje> broodjes )
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                bf.Serialize(ms,broodjes);
+                return ms.ToArray();
+            }
         }
     }
 }

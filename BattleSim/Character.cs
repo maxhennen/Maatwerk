@@ -18,6 +18,12 @@ namespace BattleSim
             HitPoints = hitPoints;
         }
 
+        public int Hitpoints(int hitpoints)
+        {
+            HitPoints = hitpoints;
+            return HitPoints;
+        }
+
         public abstract int DealDamage();
 
         public abstract void ReceiveDamage(int damage);

@@ -8,13 +8,15 @@ namespace BattleSim
 {
     public class Knight : Character
     {
-        private int ShieldPower;
+        public int ShieldPower { get; private set; }
 
 
         public Knight(string naam, int hitPoints) : base(naam, hitPoints)
         {
 
         }
+
+
 
         public override int DealDamage()
         {
@@ -32,5 +34,5 @@ namespace BattleSim
                 Character c = new Knight(this.Naam,hitpoints);
             }
         }
-    }
+        }
 }

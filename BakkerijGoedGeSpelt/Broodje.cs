@@ -23,5 +23,11 @@ namespace BakkerijGoedGeSpelt
         {
             return true;
         }
+
+        public string NaamEnPrijs(string naam, double prijs)
+        {
+            NaamPrijs = naam + " - " + prijs;
+            return NaamPrijs;
+        }
     }
 }

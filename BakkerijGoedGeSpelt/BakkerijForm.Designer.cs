@@ -63,9 +63,9 @@
             this.gbBroodjes.Controls.Add(this.gbToevoegen);
             this.gbBroodjes.Controls.Add(this.lbBroodjes);
             this.gbBroodjes.Location = new System.Drawing.Point(29, 38);
-            this.gbBroodjes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbBroodjes.Margin = new System.Windows.Forms.Padding(4);
             this.gbBroodjes.Name = "gbBroodjes";
-            this.gbBroodjes.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbBroodjes.Padding = new System.Windows.Forms.Padding(4);
             this.gbBroodjes.Size = new System.Drawing.Size(961, 475);
             this.gbBroodjes.TabIndex = 0;
             this.gbBroodjes.TabStop = false;
@@ -74,17 +74,18 @@
             // btMaakPrijsLijst
             // 
             this.btMaakPrijsLijst.Location = new System.Drawing.Point(561, 350);
-            this.btMaakPrijsLijst.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btMaakPrijsLijst.Margin = new System.Windows.Forms.Padding(4);
             this.btMaakPrijsLijst.Name = "btMaakPrijsLijst";
             this.btMaakPrijsLijst.Size = new System.Drawing.Size(372, 47);
             this.btMaakPrijsLijst.TabIndex = 7;
             this.btMaakPrijsLijst.Text = "Maak prijslijst";
             this.btMaakPrijsLijst.UseVisualStyleBackColor = true;
+            this.btMaakPrijsLijst.Click += new System.EventHandler(this.btMaakPrijsLijst_Click);
             // 
             // btHaalBroodjesOp
             // 
             this.btHaalBroodjesOp.Location = new System.Drawing.Point(760, 404);
-            this.btHaalBroodjesOp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btHaalBroodjesOp.Margin = new System.Windows.Forms.Padding(4);
             this.btHaalBroodjesOp.Name = "btHaalBroodjesOp";
             this.btHaalBroodjesOp.Size = new System.Drawing.Size(173, 46);
             this.btHaalBroodjesOp.TabIndex = 6;
@@ -95,12 +96,13 @@
             // btSlaBroodjesOp
             // 
             this.btSlaBroodjesOp.Location = new System.Drawing.Point(561, 404);
-            this.btSlaBroodjesOp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btSlaBroodjesOp.Margin = new System.Windows.Forms.Padding(4);
             this.btSlaBroodjesOp.Name = "btSlaBroodjesOp";
             this.btSlaBroodjesOp.Size = new System.Drawing.Size(173, 46);
             this.btSlaBroodjesOp.TabIndex = 5;
             this.btSlaBroodjesOp.Text = "Sla broodjes op";
             this.btSlaBroodjesOp.UseVisualStyleBackColor = true;
+            this.btSlaBroodjesOp.Click += new System.EventHandler(this.btSlaBroodjesOp_Click);
             // 
             // lblBeleg
             // 
@@ -146,9 +148,9 @@
             this.gbToevoegen.Controls.Add(this.tbNaamBroodje);
             this.gbToevoegen.Controls.Add(this.label1);
             this.gbToevoegen.Location = new System.Drawing.Point(8, 23);
-            this.gbToevoegen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbToevoegen.Margin = new System.Windows.Forms.Padding(4);
             this.gbToevoegen.Name = "gbToevoegen";
-            this.gbToevoegen.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbToevoegen.Padding = new System.Windows.Forms.Padding(4);
             this.gbToevoegen.Size = new System.Drawing.Size(300, 225);
             this.gbToevoegen.TabIndex = 1;
             this.gbToevoegen.TabStop = false;
@@ -158,7 +160,7 @@
             // 
             this.btBroodjeKlaar.Enabled = false;
             this.btBroodjeKlaar.Location = new System.Drawing.Point(156, 185);
-            this.btBroodjeKlaar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btBroodjeKlaar.Margin = new System.Windows.Forms.Padding(4);
             this.btBroodjeKlaar.Name = "btBroodjeKlaar";
             this.btBroodjeKlaar.Size = new System.Drawing.Size(136, 28);
             this.btBroodjeKlaar.TabIndex = 8;
@@ -169,7 +171,7 @@
             // 
             this.btBelegToevoegen.Enabled = false;
             this.btBelegToevoegen.Location = new System.Drawing.Point(19, 185);
-            this.btBelegToevoegen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btBelegToevoegen.Margin = new System.Windows.Forms.Padding(4);
             this.btBelegToevoegen.Name = "btBelegToevoegen";
             this.btBelegToevoegen.Size = new System.Drawing.Size(136, 28);
             this.btBelegToevoegen.TabIndex = 7;
@@ -181,7 +183,7 @@
             this.cbBeleg.Enabled = false;
             this.cbBeleg.FormattingEnabled = true;
             this.cbBeleg.Location = new System.Drawing.Point(103, 151);
-            this.cbBeleg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbBeleg.Margin = new System.Windows.Forms.Padding(4);
             this.cbBeleg.Name = "cbBeleg";
             this.cbBeleg.Size = new System.Drawing.Size(173, 24);
             this.cbBeleg.TabIndex = 6;
@@ -199,7 +201,7 @@
             // btBroodjeAanmaken
             // 
             this.btBroodjeAanmaken.Location = new System.Drawing.Point(71, 111);
-            this.btBroodjeAanmaken.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btBroodjeAanmaken.Margin = new System.Windows.Forms.Padding(4);
             this.btBroodjeAanmaken.Name = "btBroodjeAanmaken";
             this.btBroodjeAanmaken.Size = new System.Drawing.Size(163, 28);
             this.btBroodjeAanmaken.TabIndex = 4;
@@ -210,7 +212,7 @@
             // 
             this.cbBroodSoorten.FormattingEnabled = true;
             this.cbBroodSoorten.Location = new System.Drawing.Point(103, 71);
-            this.cbBroodSoorten.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbBroodSoorten.Margin = new System.Windows.Forms.Padding(4);
             this.cbBroodSoorten.Name = "cbBroodSoorten";
             this.cbBroodSoorten.Size = new System.Drawing.Size(173, 24);
             this.cbBroodSoorten.TabIndex = 3;
@@ -228,7 +230,7 @@
             // tbNaamBroodje
             // 
             this.tbNaamBroodje.Location = new System.Drawing.Point(103, 34);
-            this.tbNaamBroodje.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbNaamBroodje.Margin = new System.Windows.Forms.Padding(4);
             this.tbNaamBroodje.Name = "tbNaamBroodje";
             this.tbNaamBroodje.Size = new System.Drawing.Size(173, 22);
             this.tbNaamBroodje.TabIndex = 1;
@@ -248,7 +250,7 @@
             this.lbBroodjes.FormattingEnabled = true;
             this.lbBroodjes.ItemHeight = 16;
             this.lbBroodjes.Location = new System.Drawing.Point(316, 30);
-            this.lbBroodjes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbBroodjes.Margin = new System.Windows.Forms.Padding(4);
             this.lbBroodjes.Name = "lbBroodjes";
             this.lbBroodjes.Size = new System.Drawing.Size(212, 420);
             this.lbBroodjes.TabIndex = 0;
@@ -261,7 +263,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1040, 549);
             this.Controls.Add(this.gbBroodjes);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "bakkerijForm";
             this.Text = "Bakkerij GoedGeSpelt";
             this.Load += new System.EventHandler(this.bakkerijForm_Load);
