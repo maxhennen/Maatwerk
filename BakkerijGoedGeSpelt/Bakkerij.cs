@@ -11,6 +11,7 @@ namespace BakkerijGoedGeSpelt
 {
     public class Bakkerij
     {
+        private List<Broodje> Broodjes;
         public string Naam { get; private set; }
         public Bakkerij(string naam)
         {
@@ -58,6 +59,11 @@ namespace BakkerijGoedGeSpelt
 
         public void SlaBroodjesOp()
         {
+            Broodjes = new List<Broodje>();
+            foreach (Broodje b in HaalBroodjesOp())
+            {
+                Broodjes.Add(b);
+            }
             try
             {
                 SaveFileDialog saveFile = new SaveFileDialog();
@@ -66,9 +72,9 @@ namespace BakkerijGoedGeSpelt
                 FileStream fs = new FileStream(saveFile.FileName, FileMode.Append, FileAccess.Write);
                     using (StreamWriter sw = new StreamWriter(fs))
                     {
-                        for (int i = 0; i < ToByteArray(HaalBroodjesOp()).Length; i++)
+                        for (int i = 0; i < ToByteArray(Broodjes).Length; i++)
                         {
-                            sw.WriteLine(ToByteArray(HaalBroodjesOp())[i]);
+                            sw.WriteLine(ToByteArray(Broodjes)[i]);
                         }
                     }
                 fs.Close();
