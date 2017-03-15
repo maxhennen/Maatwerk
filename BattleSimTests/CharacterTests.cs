@@ -14,15 +14,25 @@ namespace BattleSim.Tests
         [TestMethod()]
         public void DealDamageTest()
         {
-            Character knight = new Knight("Knight", 10);
+            Knight knight = new Knight("Knight", 10);
             Wizard wizard = new Wizard("Wizard", 10);
-
+            int damageWizard = 0;
 
             if (wizard.Mana >= wizard.Spell.ManaCost)
             {
-                int damage = wizard.Spell.ManaCost;
-                Assert.AreEqual(1,damage);
+           
             }
+
+            else
+            {
+                Random Wr = new Random();
+                damageWizard = Wr.Next(0, wizard.EquipedWeapon.MaxHitDamage);
+            }
+            Assert.IsTrue(damageWizard >= 0 && damageWizard <= wizard.Weapon.MaxHitDamage, "Goed");
+
+            Random Kr = new Random();
+            int damageKnight = Kr.Next(0, knight.EquipedWeapon.MaxHitDamage);
+            Assert.IsTrue(damageKnight >= 0 && damageKnight <= knight.Weapon.MaxHitDamage, "Goed");
         }
         
         [TestMethod()]
@@ -32,13 +42,16 @@ namespace BattleSim.Tests
             Character wizard = new Wizard("Wizard", 10);
 
             int damage = 10;
-
+            int KnightHitpoints = 0;
             damage = damage - knight.ShieldPower;
             if (damage >= 0)
             {
-                int KnightHitpoints = knight.HitPoints - damage;
+                KnightHitpoints = knight.HitPoints - damage;
                 knight.Hitpoints(KnightHitpoints);
             }
+            Knight knight1 = new Knight("Knight", KnightHitpoints);
+            Assert.Equals(knight1, knight);
+            knight.Equals(knight1);
             Assert.AreEqual(0, knight.HitPoints);
 
             int WizardHitpoints = wizard.HitPoints - damage;

@@ -9,7 +9,7 @@ namespace BattleSim
     public class Knight : Character
     {
         public int ShieldPower { get; private set; }
-
+        public Weapon Weapon = new Weapon("Sword",10);
 
         public Knight(string naam, int hitPoints) : base(naam, hitPoints)
         {

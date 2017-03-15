@@ -35,7 +35,8 @@ namespace BakkerijGoedGeSpelt
 
         public List<Brood> LaadBroodsoortenUitBestand()
         {
-            return FromByteArray<List<Brood>>("BroodSoortenLijst-versie2.bin");
+            FileStream fs = new FileStream("BroodSoortenLijst-versie2.bin", FileMode.Open);
+            return FromByteArray<List<Brood>>(fs);
         }
         
         public void MaakPrijsLijst()
@@ -57,42 +58,50 @@ namespace BakkerijGoedGeSpelt
 
         public void SlaBroodjesOp()
         {
-            SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.ShowDialog();
-            File.WriteAllText(saveFile.FileName,string.Empty);
-            using (FileStream fs = new FileStream(saveFile.FileName, FileMode.Append, FileAccess.Write))
+            try
             {
-                using (StreamWriter sw = new StreamWriter(fs))
-                {
-                    for (int i = 0; i < ToByteArray(HaalBroodjesOp()).Length; i++)
+                SaveFileDialog saveFile = new SaveFileDialog();
+                saveFile.ShowDialog();
+                File.WriteAllText(saveFile.FileName, string.Empty);
+                FileStream fs = new FileStream(saveFile.FileName, FileMode.Append, FileAccess.Write);
+                    using (StreamWriter sw = new StreamWriter(fs))
                     {
-                        sw.WriteLine(ToByteArray(HaalBroodjesOp())[i]);
+                        for (int i = 0; i < ToByteArray(HaalBroodjesOp()).Length; i++)
+                        {
+                            sw.WriteLine(ToByteArray(HaalBroodjesOp())[i]);
+                        }
                     }
-                }
+                fs.Close();
+            }
+            catch (ArgumentException)
+            {
+
             }
         }
 
         public List<Broodje> HaalBroodjesOp()
         {
-            return FromByteArray<List<Broodje>>("broodjes.bin");
+            FileStream fs = new FileStream("broodjes.bin", FileMode.Open);
+            return FromByteArray<List<Broodje>>(fs);
         }
-        public T FromByteArray<T>(string file)
+        public T FromByteArray<T>(FileStream fs)
         {
             byte[] bin = null;
             object obj = null;
 
-            using (FileStream fs = new FileStream(file, FileMode.Open))
-            {
-                BinaryReader br = new BinaryReader(fs);
-                bin = br.ReadBytes(Convert.ToInt32(fs.Length));
-                using (MemoryStream ms = new MemoryStream())
+                if (fs.Length != 0)
                 {
-                    BinaryFormatter bf = new BinaryFormatter();
-                    ms.Write(bin, 0, bin.Length);
-                    ms.Seek(0, SeekOrigin.Begin);
-                    obj = bf.Deserialize(ms);
+                    BinaryReader br = new BinaryReader(fs);
+                    bin = br.ReadBytes(Convert.ToInt32(fs.Length));
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        BinaryFormatter bf = new BinaryFormatter();
+                        ms.Write(bin, 0, bin.Length);
+                        ms.Seek(0, SeekOrigin.Begin);
+                        obj = bf.Deserialize(ms);
+                    }
                 }
-            }
+            fs.Close();
             return (T)obj;
         }
 

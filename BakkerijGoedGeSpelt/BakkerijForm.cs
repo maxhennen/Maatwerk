@@ -32,12 +32,19 @@ namespace BakkerijGoedGeSpelt
 
         private void btHaalBroodjesOp_Click(object sender, EventArgs e)
         {
-            foreach (Broodje broodje in bakkerij.HaalBroodjesOp())
+            try
             {
-                if (broodje.Naam != null)
+                foreach (Broodje broodje in bakkerij.HaalBroodjesOp())
                 {
-                    lbBroodjes.Items.Add(broodje.Naam);
+                    if (broodje.Naam != null)
+                    {
+                        lbBroodjes.Items.Add(broodje.Naam);
+                    }
                 }
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Bestand is leeg");
             }
         }
 
