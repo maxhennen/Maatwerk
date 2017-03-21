@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Xml.Serialization;
 namespace BakkerijGoedGeSpelt
 {
     [Serializable]
@@ -12,22 +12,23 @@ namespace BakkerijGoedGeSpelt
     {
         public string Naam { get; private set; }
         public double Prijs { get; private set; }
-        public string NaamPrijs { get; private set; }
+        public string NaamEnPrijs { get; private set; }
 
         public Broodje(string naam, BelegSoort belegSoort)
         {
             Naam = naam;
         }
 
-        public bool BelegBroodje(Beleg beleg, bool meerdan5)
-        {
-            return true;
-        }
+       //public bool BelegBroodje(Beleg beleg, out bool meerdan5)
+       //{
+       //    return true;
+       //}
 
-        public string NaamEnPrijs(string naam, double prijs)
+        
+        public string NaamPrijs(string naam, double prijs)
         {
-            NaamPrijs = naam + " - " + prijs;
-            return NaamPrijs;
+            NaamEnPrijs = naam + " - " + prijs;
+            return NaamEnPrijs;
         }
     }
 }

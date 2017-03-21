@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieKlikker", "CookieKlikker\CookieKlikker.csproj", "{87FA59B5-87EB-4449-ACE7-6CD57F766C5C}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakkerijGoedGeSpelt", "BakkerijGoedGeSpelt\BakkerijGoedGeSpelt.csproj", "{70513525-55D2-4D2F-868C-A28530A3C000}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleSimTests", "BattleSimTests\BattleSimTests.csproj", "{35E3966C-4CAA-4A0C-9B8F-270F69EBEFBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceMan", "E:\Users\maxhe\Documents\School\Fontys Maatwerk Traject Semester 2\Demo_Opdracht_Spaceman\Demo SpaceMan - Startproject\SpaceMan\SpaceMan.csproj", "{E42E9078-AEE8-4550-A0D4-3F5D5FCAA706}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{35E3966C-4CAA-4A0C-9B8F-270F69EBEFBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35E3966C-4CAA-4A0C-9B8F-270F69EBEFBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35E3966C-4CAA-4A0C-9B8F-270F69EBEFBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E42E9078-AEE8-4550-A0D4-3F5D5FCAA706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E42E9078-AEE8-4550-A0D4-3F5D5FCAA706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E42E9078-AEE8-4550-A0D4-3F5D5FCAA706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E42E9078-AEE8-4550-A0D4-3F5D5FCAA706}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

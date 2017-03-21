@@ -36,9 +36,9 @@ namespace BakkerijGoedGeSpelt
             {
                 foreach (Broodje broodje in bakkerij.HaalBroodjesOp())
                 {
-                    if (broodje.Naam != null)
+                    if (broodje.Naam == null)
                     {
-                        lbBroodjes.Items.Add(broodje.Naam);
+                        lbBroodjes.Items.Add(broodje.NaamPrijs(broodje.Naam,broodje.Prijs));
                     }
                 }
             }
