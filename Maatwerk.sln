@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleSimTests", "BattleSim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceMan", "E:\Users\maxhe\Documents\School\Fontys Maatwerk Traject Semester 2\Demo_Opdracht_Spaceman\Demo SpaceMan - Startproject\SpaceMan\SpaceMan.csproj", "{E42E9078-AEE8-4550-A0D4-3F5D5FCAA706}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moestuin", "Moestijn\Moestuin.csproj", "{A4595ED5-BC58-41BE-8E34-57B4044467A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{E42E9078-AEE8-4550-A0D4-3F5D5FCAA706}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E42E9078-AEE8-4550-A0D4-3F5D5FCAA706}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E42E9078-AEE8-4550-A0D4-3F5D5FCAA706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4595ED5-BC58-41BE-8E34-57B4044467A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4595ED5-BC58-41BE-8E34-57B4044467A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4595ED5-BC58-41BE-8E34-57B4044467A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4595ED5-BC58-41BE-8E34-57B4044467A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
