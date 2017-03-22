@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Net.Mail;
@@ -26,8 +27,15 @@ namespace Moestijn
         {
             Moestuin.Vullijst();
             cbZaaitijd.DataSource = Enum.GetValues(typeof(Maand));
-            List<Groente> cbGroente = Moestuin.Groenten.GroupBy(typeof(Groente)).ToList();
-            cbKiesGroente.DataSource = Moestuin.Groenten;
+            var groenten = (from g in Moestuin.Groenten select g.GetType());
+            var distinctGroenten = groenten.Distinct();
+            cbKiesGroente.DataSource = distinctGroenten.ToArray();
+        }
+
+        private void btnZoek_Click(object sender, EventArgs e)
+        {
+            var maand = (Maand) Enum.Parse(typeof(Maand), cbZaaitijd.Text);
+            lbGroente.DataSource = Moestuin.ZoekGroentes((object) cbKiesGroente.Text, maand);
         }
     }
 }

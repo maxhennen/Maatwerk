@@ -73,6 +73,7 @@
             this.btnZoek.TabIndex = 4;
             this.btnZoek.Text = "Zoek";
             this.btnZoek.UseVisualStyleBackColor = true;
+            this.btnZoek.Click += new System.EventHandler(this.btnZoek_Click);
             // 
             // cbZaaitijd
             // 

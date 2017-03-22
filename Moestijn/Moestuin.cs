@@ -35,12 +35,12 @@ namespace Moestijn
         /// <returns>Geeft een lijst terug met groenten die van het gegeven type 
         /// zijn en in de gegeven maand gezaaid kunnen worden.</returns>
 
-        //public List<Groente> ZoekGroentes(object type, Maand zaaitijd)
-        //{
-        //    if (type == typeof(Wortelgewas))
-        //    {
-        //              
-        //    }
-        //}
+        public List<Groente> ZoekGroentes(object type, Maand zaaitijd)
+        {
+            List<Groente> GroentenZoeken;
+            var obj = (from g in Groenten where g.GetType() == type where g.Zaaitijd == zaaitijd select new {g.Naam,g.Zaaitijd,g.Oogsttijd});
+            return GroentenZoeken = obj as List<Groente>;
+            
+        }
     }
 }
