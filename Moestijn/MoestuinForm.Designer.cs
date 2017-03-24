@@ -1,6 +1,6 @@
 ﻿namespace Moestijn
 {
-    partial class Form1
+    partial class MoestuinForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MoestuinForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbGroente = new System.Windows.Forms.ListBox();
             this.btnZoek = new System.Windows.Forms.Button();

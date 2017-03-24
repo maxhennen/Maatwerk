@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ICat
 {
-    public partial class Form1 : Form
+    public partial class ICatForm : Form
     {
-        public Form1()
+        public ICatForm()
         {
             InitializeComponent();
         }

@@ -14,10 +14,10 @@ using System.Windows.Forms;
 
 namespace Moestijn
 {
-    public partial class Form1 : Form
+    public partial class MoestuinForm : Form
     {
         private Moestuin Moestuin;
-        public Form1()
+        public MoestuinForm()
         {
             Moestuin = new Moestuin();
             InitializeComponent();
@@ -35,7 +35,15 @@ namespace Moestijn
         private void btnZoek_Click(object sender, EventArgs e)
         {
             var maand = (Maand) Enum.Parse(typeof(Maand), cbZaaitijd.Text);
-            lbGroente.DataSource = Moestuin.ZoekGroentes((object) cbKiesGroente.Text, maand);
+            if (Moestuin.ZoekGroentes((object)cbKiesGroente.Text,maand).Count != 0)
+            {
+                lbGroente.DataSource = Moestuin.ZoekGroentes((object)cbKiesGroente.Text, maand);
+                lbGroente.ValueMember = "Naam";
+            }
+            else
+            {
+                MessageBox.Show("Geen groente");
+            }
         }
     }
 }

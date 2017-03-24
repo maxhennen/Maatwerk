@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace HashingProgram
 {
-    public partial class Form1 : Form
+    public partial class HashForm : Form
     {
         private Encrypting encrypting;
         private Decrypting decrypting;
-        public Form1()
+        public HashForm()
         {
             encrypting = new Encrypting();
             decrypting = new Decrypting();

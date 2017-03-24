@@ -1,6 +1,6 @@
 ﻿namespace ICat
 {
-    partial class Form1
+    partial class ICatForm
     {
         /// <summary>
         /// Required designer variable.

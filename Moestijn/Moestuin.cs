@@ -37,10 +37,28 @@ namespace Moestijn
 
         public List<Groente> ZoekGroentes(object type, Maand zaaitijd)
         {
-            List<Groente> GroentenZoeken;
-            var obj = (from g in Groenten where g.GetType() == type where g.Zaaitijd == zaaitijd select new {g.Naam,g.Zaaitijd,g.Oogsttijd});
-            return GroentenZoeken = obj as List<Groente>;
-            
+            List<Groente> GroentenZoeken = null;
+
+            if ((string)type == "Moestijn.Wortelgewas")
+            {
+                GroentenZoeken = Groenten.Except(Groenten.OfType<Bladgroente>()).ToList<Groente>();
+                GroentenZoeken =
+                (from g in GroentenZoeken
+                 where g.Zaaitijd == zaaitijd
+                    select new Wortelgewas(g.Naam, g.Zaaitijd, g.Oogsttijd)).ToList<Groente>();
+            }
+
+            else if ((string)type == "Moestijn.Bladgroente")
+            {
+                GroentenZoeken = Groenten.Except(Groenten.OfType<Wortelgewas>()).ToList<Groente>();
+                GroentenZoeken =
+                (from g in GroentenZoeken
+                 where g.Zaaitijd == zaaitijd
+                    select new Bladgroente(g.Naam, g.Zaaitijd, g.Oogsttijd)).ToList<Groente>();
+            }
+
+            return GroentenZoeken;
+
         }
     }
 }

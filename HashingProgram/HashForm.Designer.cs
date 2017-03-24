@@ -1,6 +1,6 @@
 ﻿namespace HashingProgram
 {
-    partial class Form1
+    partial class HashForm
     {
         /// <summary>
         /// Required designer variable.

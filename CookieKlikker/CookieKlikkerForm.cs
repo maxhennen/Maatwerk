@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace CookieKlikker
 {
-    public partial class Form1 : Form
+    public partial class CookieKlikkerForm : Form
     {
         private KoekjesController koekjesController;
         private Upgrade bakker;
         private Upgrade oven;
         private Upgrade deegroller;
-        public Form1()
+        public CookieKlikkerForm()
         {
             InitializeComponent();
             koekjesController = new KoekjesController();
