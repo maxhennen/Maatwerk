@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concertkaartjes", "Concertk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamesApp", "GamesApp\GamesApp.csproj", "{C0F1E379-5848-4294-B164-9ABBD189CE6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP Atleten", "OOP Atleten\OOP Atleten.csproj", "{1DA207D5-1C68-4D13-9E8F-3BEC330CF3FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{C0F1E379-5848-4294-B164-9ABBD189CE6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0F1E379-5848-4294-B164-9ABBD189CE6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0F1E379-5848-4294-B164-9ABBD189CE6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DA207D5-1C68-4D13-9E8F-3BEC330CF3FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA207D5-1C68-4D13-9E8F-3BEC330CF3FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA207D5-1C68-4D13-9E8F-3BEC330CF3FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA207D5-1C68-4D13-9E8F-3BEC330CF3FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -33,14 +33,14 @@
             this.btnDatum = new System.Windows.Forms.Button();
             this.lbConcerten = new System.Windows.Forms.ListBox();
             this.gbBestellen = new System.Windows.Forms.GroupBox();
+            this.nudAantalKaarten = new System.Windows.Forms.NumericUpDown();
+            this.btnBestellen = new System.Windows.Forms.Button();
             this.lblTotaalPrijs = new System.Windows.Forms.Label();
             this.lblBesteldeKaarten = new System.Windows.Forms.Label();
             this.lblAantalKaarten = new System.Windows.Forms.Label();
             this.lblPrijs = new System.Windows.Forms.Label();
             this.lblDatum = new System.Windows.Forms.Label();
             this.lblArtiest = new System.Windows.Forms.Label();
-            this.btnBestellen = new System.Windows.Forms.Button();
-            this.nudAantalKaarten = new System.Windows.Forms.NumericUpDown();
             this.gbBestellen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAantalKaarten)).BeginInit();
             this.SuspendLayout();
@@ -103,6 +103,22 @@
             this.gbBestellen.Text = "Bestellen";
             this.gbBestellen.Visible = false;
             // 
+            // nudAantalKaarten
+            // 
+            this.nudAantalKaarten.Location = new System.Drawing.Point(122, 107);
+            this.nudAantalKaarten.Name = "nudAantalKaarten";
+            this.nudAantalKaarten.Size = new System.Drawing.Size(120, 22);
+            this.nudAantalKaarten.TabIndex = 8;
+            // 
+            // btnBestellen
+            // 
+            this.btnBestellen.Location = new System.Drawing.Point(122, 132);
+            this.btnBestellen.Name = "btnBestellen";
+            this.btnBestellen.Size = new System.Drawing.Size(100, 37);
+            this.btnBestellen.TabIndex = 7;
+            this.btnBestellen.Text = "Bestel";
+            this.btnBestellen.UseVisualStyleBackColor = true;
+            // 
             // lblTotaalPrijs
             // 
             this.lblTotaalPrijs.AutoSize = true;
@@ -159,22 +175,6 @@
             this.lblArtiest.TabIndex = 0;
             this.lblArtiest.Text = "Artiest: ";
             // 
-            // btnBestellen
-            // 
-            this.btnBestellen.Location = new System.Drawing.Point(122, 132);
-            this.btnBestellen.Name = "btnBestellen";
-            this.btnBestellen.Size = new System.Drawing.Size(100, 37);
-            this.btnBestellen.TabIndex = 7;
-            this.btnBestellen.Text = "Bestel";
-            this.btnBestellen.UseVisualStyleBackColor = true;
-           // 
-            // nudAantalKaarten
-            // 
-            this.nudAantalKaarten.Location = new System.Drawing.Point(122, 107);
-            this.nudAantalKaarten.Name = "nudAantalKaarten";
-            this.nudAantalKaarten.Size = new System.Drawing.Size(120, 22);
-            this.nudAantalKaarten.TabIndex = 8;
-            // 
             // ConcertkaartjesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -187,6 +187,7 @@
             this.Controls.Add(this.btnPrijs);
             this.Name = "ConcertkaartjesForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.ConcertkaartjesForm_Load);
             this.gbBestellen.ResumeLayout(false);
             this.gbBestellen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAantalKaarten)).EndInit();

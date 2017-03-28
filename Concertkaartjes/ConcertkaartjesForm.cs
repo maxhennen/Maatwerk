@@ -75,5 +75,10 @@ namespace Concertkaartjes
             lblDatum.Text = concert[1];
             lblPrijs.Text = "Prijs: " + concert[2];
         }
+
+        private void ConcertkaartjesForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
