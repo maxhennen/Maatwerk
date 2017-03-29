@@ -9,14 +9,14 @@ namespace OOP_Atleten
 {
     public class Parcours
     {
-        public Image Kaart { get; private set; }
+        public string Kaart { get; private set; }
         public string Beschrijving { get; private set; }
         public int SnelsteTijdMinuten { get; private set; }
         public int AfstandKm { get; private set; }
         public int MaxHoogteverschil { get; private set; }
         public bool Verhard { get; private set; }
 
-        public Parcours(Image kaart, string beschrijving, int snelsteTijdMinuten, int afstandKm, int maxHoogteverschil,
+        public Parcours(string kaart, string beschrijving, int snelsteTijdMinuten, int afstandKm, int maxHoogteverschil,
             bool verhard)
         {
             Kaart = kaart;

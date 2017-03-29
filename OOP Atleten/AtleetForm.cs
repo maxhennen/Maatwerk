@@ -27,10 +27,9 @@ namespace OOP_Atleten
 
         public void DummyData()
         {
-            Image I = Image.FromFile("C:\\Users\\maxhe\\Source\\Repos\\Maatwerk\\OOP Atleten\\kaart.png");
-            Atleet.VoegTrainingToe(new Hardlooptrainings(Convert.ToDateTime("28-03-2017 13:00:00"), 30, 3, "Hardlopen","Zon",new Parcours(I,"lang",20,5,50,false)));
+            Atleet.VoegTrainingToe(new Hardlooptrainings(Convert.ToDateTime("28-03-2017 13:00:00"), 30, 3, "Hardlopen","Zon",new Parcours("C:\\Users\\maxhe\\Source\\Repos\\Maatwerk\\OOP Atleten\\kaart.png", "lang",20,5,50,false)));
             Atleet.VoegTrainingToe(new Zwemtraining(Convert.ToDateTime("27-03-2017 12:30:00"),45,4,"lekker zwemmen","vlinder",true,2000));
-            Atleet.VoegTrainingToe(new Hardlooptrainings(Convert.ToDateTime("26-03-2017 12:00:00"),60,4,"Rondje rennen","regen", new Parcours(I, "lang", 20, 5, 50, false)));
+            Atleet.VoegTrainingToe(new Hardlooptrainings(Convert.ToDateTime("26-03-2017 12:00:00"),60,4,"Rondje rennen","regen", new Parcours("C:\\Users\\maxhe\\Source\\Repos\\Maatwerk\\OOP Atleten\\kaart.png", "lang", 20, 5, 50, false)));
             Atleet.VoegTrainingToe(new Zwemtraining(Convert.ToDateTime("25-03-2017 14:00:00"),70,3,"In de zee","borst",false,1500));
 
             Atleet.VoegBlessureToe(new Blessure("Gekneusde enkel","enkel",Convert.ToDateTime("10-10-2016 00:00:00")));
@@ -82,7 +81,7 @@ namespace OOP_Atleten
         private void btnTraining_Click(object sender, EventArgs e)
         {
             Image I = Image.FromFile("C:\\Users\\maxhe\\Source\\Repos\\Maatwerk\\OOP Atleten\\kaart.png");
-            Training H = new Hardlooptrainings(Convert.ToDateTime("28-03-2017 14:20:00"),30,5,"leuk","zon", new Parcours(I, "lang", 20, 5, 50, false));
+            Training H = new Hardlooptrainings(Convert.ToDateTime("28-03-2017 14:20:00"),30,5,"leuk","zon", new Parcours("C:\\Users\\maxhe\\Source\\Repos\\Maatwerk\\OOP Atleten\\kaart.png", "lang", 20, 5, 50, false));
             Atleet.VoegTrainingToe(H);
         }
 
