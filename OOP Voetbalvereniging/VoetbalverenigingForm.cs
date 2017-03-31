@@ -38,10 +38,11 @@ namespace OOP_Voetbalvereniging
 
         private void RefreshListBoxTeams()
         {
-            cbThuis.DataSource = Competitie.Teams;
-            cbThuis.ValueMember = "Naam";
-            cbUit.DataSource = Competitie.Teams;
-            cbUit.ValueMember = "Naam";
+            foreach (Team T in Competitie.Teams)
+            {
+                cbThuis.Items.Add(T.Naam);
+                cbUit.Items.Add(T.Naam);
+            }
 
             lbTeams.Items.Clear();
             Competitie.Teams.Sort();
@@ -110,7 +111,6 @@ namespace OOP_Voetbalvereniging
                                     wedstrijd = new OefenWedstrijd(T1, T2, (int) nuDoelpuntenThuis.Value,
                                         (int) nuDoelpuntenUit.Value);
                                     T1.Wedstrijden.Add(wedstrijd);
-                                    T2.Wedstrijden.Add(wedstrijd);
                                 }
                             }
                         }
@@ -130,7 +130,6 @@ namespace OOP_Voetbalvereniging
                                         (int) nuDoelpuntenUit.Value, tbScheidsrechter.Text);
                                     Competitie.NieuweWedstrijd((CompetitieWedstrijd) wedstrijd);
                                     T1.NieuweWedstrijd(wedstrijd);
-                                    T2.NieuweWedstrijd(wedstrijd);
                                     break;
                                 }
                             }

@@ -196,13 +196,13 @@
             this.gbNieuweWedstrijd.Controls.Add(this.btnWedstrijdAanmaken);
             this.gbNieuweWedstrijd.Controls.Add(this.chbOefenwedstrijd);
             this.gbNieuweWedstrijd.Controls.Add(this.tbScheidsrechter);
+            this.gbNieuweWedstrijd.Controls.Add(this.cbUit);
             this.gbNieuweWedstrijd.Controls.Add(this.lblScheidsrechter);
             this.gbNieuweWedstrijd.Controls.Add(this.lblStreepjeTussenDoelpunten);
             this.gbNieuweWedstrijd.Controls.Add(this.nuDoelpuntenThuis);
             this.gbNieuweWedstrijd.Controls.Add(this.lblUit);
             this.gbNieuweWedstrijd.Controls.Add(this.lblThuis);
             this.gbNieuweWedstrijd.Controls.Add(this.nuDoelpuntenUit);
-            this.gbNieuweWedstrijd.Controls.Add(this.cbUit);
             this.gbNieuweWedstrijd.Controls.Add(this.cbThuis);
             this.gbNieuweWedstrijd.Location = new System.Drawing.Point(346, 305);
             this.gbNieuweWedstrijd.Name = "gbNieuweWedstrijd";
@@ -291,7 +291,7 @@
             // cbUit
             // 
             this.cbUit.FormattingEnabled = true;
-            this.cbUit.Location = new System.Drawing.Point(133, 44);
+            this.cbUit.Location = new System.Drawing.Point(136, 44);
             this.cbUit.Name = "cbUit";
             this.cbUit.Size = new System.Drawing.Size(121, 24);
             this.cbUit.TabIndex = 1;

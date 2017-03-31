@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OOP_Voetbalvereniging
 {
@@ -18,9 +19,21 @@ namespace OOP_Voetbalvereniging
         }
         public void NieuweWedstrijd(Wedstrijd wedstrijd)
         {
-            if (wedstrijd.TeamThuis == wedstrijd.TeamUit)
+            try
             {
-                throw new OngeldigeWedstrijdException("Uit en thuis team kunnen niet hetzelfde zijn");
+                if (wedstrijd.TeamThuis == wedstrijd.TeamUit || wedstrijd.DoelpuntenThuis < 0 ||wedstrijd.DoelpuntenUit < 0)
+                {
+                    throw new OngeldigeWedstrijdException("");
+                }
+                else
+                {
+                    wedstrijd.TeamThuis.Wedstrijden.Add(wedstrijd);
+                    wedstrijd.TeamUit.Wedstrijden.Add(wedstrijd);
+                }
+            }
+            catch (OngeldigeWedstrijdException)
+            {
+                MessageBox.Show("Uit en thuis team kunnen niet hetzelfde zijn of doelpunten kunnen niet negatieft zijn");
             }
         }
 

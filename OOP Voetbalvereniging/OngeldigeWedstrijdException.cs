@@ -11,7 +11,6 @@ namespace OOP_Voetbalvereniging
     {
         public OngeldigeWedstrijdException(string exception) : base(exception)
         {
-            MessageBox.Show(exception);
         }
     }
 }
