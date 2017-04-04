@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 namespace OOP_Voetbalvereniging
 {
-    [Serializable]
     public class CompetitieWedstrijd : Wedstrijd
     {
         public string Scheidsrechter { get; private set; }

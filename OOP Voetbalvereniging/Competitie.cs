@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace OOP_Voetbalvereniging
 {
-    public class Competitie
+    public class Competitie:IStandComparer
     {
         public List<Team> Teams { get; private set; }
         public List<CompetitieWedstrijd> Wedstrijden { get; private set; }
@@ -22,9 +22,18 @@ namespace OOP_Voetbalvereniging
             Wedstrijden = new List<CompetitieWedstrijd>();
         }
 
-        public void NieuweWedstrijd(CompetitieWedstrijd wedstrijd)
+        public void NieuweWedstrijd(CompetitieWedstrijd wedstrijd, CompetitieGewijzigd gewijzigd)
         {
-            Wedstrijden.Add(wedstrijd);
+                if (wedstrijd.TeamThuis == wedstrijd.TeamUit || wedstrijd.DoelpuntenThuis < 0 || wedstrijd.DoelpuntenUit < 0)
+                {
+                    throw new OngeldigeWedstrijdException("");
+                }
+                else
+                {
+                    Wedstrijden.Add(wedstrijd);
+                    wedstrijd.TeamThuis.Wedstrijden.Add(wedstrijd);
+                    wedstrijd.TeamUit.Wedstrijden.Add(wedstrijd);
+                }
         }
 
         public bool NieuwTeam(string naam)
@@ -63,39 +72,103 @@ namespace OOP_Voetbalvereniging
 
         public string GenereerStand()
         {
-            return "";
+            Teams.Sort(new IStandComparer.SorteerOpBehaaldePunten());
+            string stand = "";
+            int counter = 0;
+            foreach (Team T in Teams)
+            {
+                counter++;
+                stand += String.Format("{0,2}.   	{1,-22}	{2,2}\r\n", counter, T.Naam, T.Behaaldpunten());
+            }
+            return stand;
         }
 
-        public void CompetitieOpslaan(string map)
+        public void CompetitieOpslaan(string map,string data)
         {
+            TeamsOpslaan(map);
+            WedstrijdenOpslaan(map);
+            StandOpslaan(data);
+        }
+
+        public void TeamsOpslaan(string map)
+        {
+            File.WriteAllText(map + "\\Teams.txt", String.Empty);
+            FileIOPermission perm = new FileIOPermission(FileIOPermissionAccess.Write, map);
+            if (SecurityManager.IsGranted(perm))
+            {
+                TextWriter tw = new StreamWriter(map + "\\Teams.txt");
+                foreach (Team t in Teams)
+                {
+                    tw.WriteLine(t.Naam);
+                }
+                tw.Close();
+            }
+        }
+
+        public void WedstrijdenOpslaan(string map)
+        {
+            File.WriteAllText(map + "\\Wedstrijden.txt",String.Empty);
             FileIOPermission perm = new FileIOPermission(FileIOPermissionAccess.Write,map);
             if (SecurityManager.IsGranted(perm))
             {
-                FileStream fs = new FileStream(map + "\\Teams.bin", FileMode.Append, FileAccess.Write);
-                BinaryFormatter bf = new BinaryFormatter();
-                bf.Serialize(fs, Teams);
-                fs.Close();
+                TextWriter tw = new StreamWriter(map + "\\Wedstrijden.txt");
+                foreach (CompetitieWedstrijd W in Wedstrijden)
+                {
+                    tw.WriteLine(W.TeamThuis+":"+W.TeamUit+":"+W.DoelpuntenThuis+":"+W.DoelpuntenUit+":"+W.Scheidsrechter);
+                }
+                tw.Close();
             }
         }
 
         public void CompetitieLaden(string map)
         {
-            byte[] bin = null;
-            object obj = null;
-
-            FileStream fs = new FileStream(map + "\\Teams.bin",FileMode.Open);
-
-            if (fs.Length != 0)
-            {
-                BinaryReader br = new BinaryReader(fs);
-                bin = br.ReadBytes(Convert.ToInt32(fs.Length));
-                BinaryFormatter bf = new BinaryFormatter();
-                fs.Write(bin, 0, bin.Length);
-                fs.Seek(0, SeekOrigin.Begin);
-                obj = bf.Deserialize(fs);
-            }
-            fs.Close();
-            Teams = (List<Team>) obj;
+            TeamsLaden(map);
+            WedstrijdenLaden(map);
+            StandLaden();
         }
+
+        public void TeamsLaden(string map)
+        {
+            string[] lines = File.ReadAllLines(map + "\\Teams.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                Teams.Add(new Team(lines[i]));
+            }
+        }
+
+        public void WedstrijdenLaden(string map)
+        {
+            string[] lines = File.ReadAllLines(map + "\\Wedstrijden.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] substring = lines[i].Split(':');
+                CompetitieWedstrijd cw = new CompetitieWedstrijd(new Team(substring[0]), new Team(substring[1]),Convert.ToInt32(substring[2]),Convert.ToInt32(substring[3]),substring[4]);
+                foreach (Team T in Teams)
+                {
+                    if (T.Naam == cw.TeamThuis.Naam || T.Naam == cw.TeamUit.Naam)
+                    {
+                        NieuweWedstrijd(cw);
+                    }
+                }
+            }
+        }
+
+        public void StandOpslaan(string data)
+        {
+            File.WriteAllText("E:\\Users\\maxhe\\Desktop\\Stand.txt", String.Empty);
+            File.WriteAllText("E:\\Users\\maxhe\\Desktop\\Stand.txt", data);
+        }
+
+        public void StandLaden()
+        {
+            string stand = "";
+            string[] lines = File.ReadAllLines("E:\\Users\\maxhe\\Desktop\\Stand.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                stand += lines[i];
+            }
+        }
+
+        public delegate void CompetitieGewijzigd();
     }
 }

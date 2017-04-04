@@ -38,11 +38,18 @@ namespace OOP_Voetbalvereniging
 
         private void RefreshListBoxTeams()
         {
+            List<Team> Thuis = new List<Team>();
+            List<Team> Uit = new List<Team>();
             foreach (Team T in Competitie.Teams)
             {
-                cbThuis.Items.Add(T.Naam);
-                cbUit.Items.Add(T.Naam);
+                Thuis.Add(T);
+                Uit.Add(T);
             }
+
+            cbThuis.DataSource = Thuis.Distinct().ToArray();
+            cbThuis.ValueMember = "Naam";
+            cbUit.DataSource = Uit.Distinct().ToArray();
+            cbUit.ValueMember = "Naam";
 
             lbTeams.Items.Clear();
             Competitie.Teams.Sort();
@@ -50,6 +57,7 @@ namespace OOP_Voetbalvereniging
             {
                 lbTeams.Items.Add(T.ToString());
             }
+            tbStand.Text = Competitie.GenereerStand();
         }
 
         private void btnTeamVerwijderen_Click(object sender, EventArgs e)
@@ -74,81 +82,85 @@ namespace OOP_Voetbalvereniging
 
         private void btnOpslaan_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            DialogResult result = fbd.ShowDialog();
-
-            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-            {
-                Competitie.CompetitieOpslaan(fbd.SelectedPath);
-            }
+            
         }
 
         private void btnLaden_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            DialogResult result = fbd.ShowDialog();
-            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-            {
-                Competitie.CompetitieLaden(fbd.SelectedPath);
-            }
-            RefreshListBoxTeams();
+            
         }
 
         private void btnWedstrijdAanmaken_Click(object sender, EventArgs e)
         {
-            Wedstrijd wedstrijd;
-
-                if (chbOefenwedstrijd.Checked == true)
+            try
+            {
+                Wedstrijd wedstrijd = null;
+                foreach (Team T1 in Competitie.Teams)
                 {
-                    foreach (Team T1 in Competitie.Teams)
-                    {
-                        foreach (Team T2 in Competitie.Teams)
-                        {
-                            if (T1.Naam == cbThuis.Text)
-                            {
-                                if (T2.Naam == cbUit.Text)
-                                {
-                                    wedstrijd = new OefenWedstrijd(T1, T2, (int) nuDoelpuntenThuis.Value,
-                                        (int) nuDoelpuntenUit.Value);
-                                    T1.Wedstrijden.Add(wedstrijd);
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (Team T1 in Competitie.Teams)
+                    foreach (Team T2 in Competitie.Teams)
                     {
                         if (T1.Naam == cbThuis.Text)
                         {
-                            foreach (Team T2 in Competitie.Teams)
+                            if (T2.Naam == cbUit.Text)
                             {
-                                if (T2.Naam == cbUit.Text)
+                                if (chbOefenwedstrijd.Checked)
+                                {
+                                    wedstrijd = new OefenWedstrijd(T1, T2, (int) nuDoelpuntenThuis.Value,
+                                        (int) nuDoelpuntenUit.Value);
+                                    T1.NieuweWedstrijd(wedstrijd);
+                                    T2.NieuweWedstrijd(wedstrijd);
+                                }
+                                else
                                 {
                                     wedstrijd = new CompetitieWedstrijd(T1, T2, (int) nuDoelpuntenThuis.Value,
                                         (int) nuDoelpuntenUit.Value, tbScheidsrechter.Text);
                                     Competitie.NieuweWedstrijd((CompetitieWedstrijd) wedstrijd);
-                                    T1.NieuweWedstrijd(wedstrijd);
-                                    break;
                                 }
+
                             }
-                            break;
                         }
                     }
                 }
+                MessageBox.Show("Wedstrijd is aangemaakt");
+                RefreshListBoxTeams();
+            }
+            catch (OngeldigeWedstrijdException)
+            {
+                MessageBox.Show("Wedstrijd kon niet worden aangemaakt");
+            }
+            
         }
 
         private void btnToonWedstrijden_Click(object sender, EventArgs e)
         {
-            foreach (Team T in Competitie.Teams)
+            lbWedstrijdenTeam.Items.Clear();
+            foreach (Wedstrijd W in Competitie.Wedstrijden)
             {
-                if (lbTeams.GetItemText(lbTeams.SelectedItem) == T.Naam)
+                if (W.TeamThuis.Naam == lbTeams.GetItemText(lbTeams.SelectedItem) ||
+                    W.TeamUit.Naam == lbTeams.GetItemText(lbTeams.SelectedItem))
                 {
-                    lbWedstrijdenTeam.DataSource = T.Wedstrijden;
-                    lbWedstrijdenTeam.ValueMember = "TeamThuis";
+                    lbWedstrijdenTeam.Items.Add(W.ToString());
                 }
             }
+
+            var wedstrijden = (from W in Competitie.Wedstrijden
+                where lbTeams.GetItemText(lbTeams.SelectedItem) == W.TeamThuis.Naam ||
+                      lbTeams.GetItemText(lbTeams.SelectedItem) == W.TeamUit.Naam
+                select W.ToString());
+            var dubbelenVerwijderen = wedstrijden.Distinct();
+            lbWedstrijdenTeam.DataSource = dubbelenVerwijderen.ToArray();
         }
+
+        private void VoetbalverenigingForm_Load(object sender, EventArgs e)
+        {
+            Competitie.CompetitieLaden("E:\\Users\\maxhe\\Desktop");
+            RefreshListBoxTeams();
+        }
+
+        private void VoetbalverenigingForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Competitie.CompetitieOpslaan("E:\\Users\\maxhe\\Desktop",tbStand.Text);
+        }
+
     }
 }

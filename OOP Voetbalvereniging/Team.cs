@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 namespace OOP_Voetbalvereniging
 {
-    [Serializable]
     public class Team:IComparable<Team>
     {
         public string Naam { get; private set; }
@@ -16,30 +15,55 @@ namespace OOP_Voetbalvereniging
         public Team(string naam)
         {
             Naam = naam;
+            Wedstrijden = new List<Wedstrijd>();
         }
         public void NieuweWedstrijd(Wedstrijd wedstrijd)
         {
-            try
+            if (wedstrijd.TeamThuis == wedstrijd.TeamUit || wedstrijd.DoelpuntenThuis < 0 ||wedstrijd.DoelpuntenUit < 0)
             {
-                if (wedstrijd.TeamThuis == wedstrijd.TeamUit || wedstrijd.DoelpuntenThuis < 0 ||wedstrijd.DoelpuntenUit < 0)
-                {
-                    throw new OngeldigeWedstrijdException("");
-                }
-                else
-                {
-                    wedstrijd.TeamThuis.Wedstrijden.Add(wedstrijd);
-                    wedstrijd.TeamUit.Wedstrijden.Add(wedstrijd);
-                }
+                throw new OngeldigeWedstrijdException("");
             }
-            catch (OngeldigeWedstrijdException)
+            else
             {
-                MessageBox.Show("Uit en thuis team kunnen niet hetzelfde zijn of doelpunten kunnen niet negatieft zijn");
+                wedstrijd.TeamThuis.Wedstrijden.Add(wedstrijd);
+                wedstrijd.TeamUit.Wedstrijden.Add(wedstrijd);
             }
         }
 
         public int Behaaldpunten()
         {
-            return 0;
+            int behaaldePunten = 0;
+            foreach (Wedstrijd W in Wedstrijden)
+            {
+                if (W.GetType() == typeof(CompetitieWedstrijd))
+                {
+                    if (W.TeamThuis.Naam == Naam)
+                    {
+                        if (W.DoelpuntenThuis > W.DoelpuntenUit)
+                        {
+                            behaaldePunten += 3;
+                        }
+
+                        else if (W.DoelpuntenThuis == W.DoelpuntenUit)
+                        {
+                            behaaldePunten += 1;
+                        }
+                    }
+
+                    if (W.TeamUit.Naam == Naam)
+                    {
+                        if (W.DoelpuntenThuis < W.DoelpuntenUit)
+                        {
+                            behaaldePunten += 3;
+                        }
+                        else if (W.DoelpuntenThuis == W.DoelpuntenUit)
+                        {
+                            behaaldePunten += 1;
+                        }
+                    }
+                }
+            }
+            return behaaldePunten;
         }
 
         public override string ToString()

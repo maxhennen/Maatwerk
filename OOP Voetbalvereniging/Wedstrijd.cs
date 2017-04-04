@@ -25,7 +25,7 @@ namespace OOP_Voetbalvereniging
 
         public override string ToString()
         {
-            return TeamThuis.Naam + " - " + TeamUit.Naam + "is geeindigd in " + DoelpuntenThuis + " - " + DoelpuntenUit;
+            return TeamThuis.Naam + " - " + TeamUit.Naam + " is geeindigd in " + DoelpuntenThuis + " - " + DoelpuntenUit;
         }
     }
 }

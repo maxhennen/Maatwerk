@@ -45,14 +45,16 @@
             this.btnWedstrijdAanmaken = new System.Windows.Forms.Button();
             this.chbOefenwedstrijd = new System.Windows.Forms.CheckBox();
             this.tbScheidsrechter = new System.Windows.Forms.TextBox();
+            this.cbUit = new System.Windows.Forms.ComboBox();
             this.lblScheidsrechter = new System.Windows.Forms.Label();
             this.lblStreepjeTussenDoelpunten = new System.Windows.Forms.Label();
             this.nuDoelpuntenThuis = new System.Windows.Forms.NumericUpDown();
             this.lblUit = new System.Windows.Forms.Label();
             this.lblThuis = new System.Windows.Forms.Label();
             this.nuDoelpuntenUit = new System.Windows.Forms.NumericUpDown();
-            this.cbUit = new System.Windows.Forms.ComboBox();
             this.cbThuis = new System.Windows.Forms.ComboBox();
+            this.tbStand = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbTeams.SuspendLayout();
             this.gbWedstrijdenTeam.SuspendLayout();
             this.gbNieuweWedstrijd.SuspendLayout();
@@ -238,6 +240,14 @@
             this.tbScheidsrechter.Size = new System.Drawing.Size(100, 22);
             this.tbScheidsrechter.TabIndex = 8;
             // 
+            // cbUit
+            // 
+            this.cbUit.FormattingEnabled = true;
+            this.cbUit.Location = new System.Drawing.Point(136, 44);
+            this.cbUit.Name = "cbUit";
+            this.cbUit.Size = new System.Drawing.Size(121, 24);
+            this.cbUit.TabIndex = 1;
+            // 
             // lblScheidsrechter
             // 
             this.lblScheidsrechter.AutoSize = true;
@@ -288,14 +298,6 @@
             this.nuDoelpuntenUit.Size = new System.Drawing.Size(45, 22);
             this.nuDoelpuntenUit.TabIndex = 4;
             // 
-            // cbUit
-            // 
-            this.cbUit.FormattingEnabled = true;
-            this.cbUit.Location = new System.Drawing.Point(136, 44);
-            this.cbUit.Name = "cbUit";
-            this.cbUit.Size = new System.Drawing.Size(121, 24);
-            this.cbUit.TabIndex = 1;
-            // 
             // cbThuis
             // 
             this.cbThuis.FormattingEnabled = true;
@@ -304,16 +306,37 @@
             this.cbThuis.Size = new System.Drawing.Size(121, 24);
             this.cbThuis.TabIndex = 0;
             // 
+            // tbStand
+            // 
+            this.tbStand.Location = new System.Drawing.Point(700, 33);
+            this.tbStand.Multiline = true;
+            this.tbStand.Name = "tbStand";
+            this.tbStand.Size = new System.Drawing.Size(492, 475);
+            this.tbStand.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(700, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 17);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Stand";
+            // 
             // VoetbalverenigingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1204, 520);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tbStand);
             this.Controls.Add(this.gbNieuweWedstrijd);
             this.Controls.Add(this.gbWedstrijdenTeam);
             this.Controls.Add(this.gbTeams);
             this.Name = "VoetbalverenigingForm";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VoetbalverenigingForm_FormClosing);
+            this.Load += new System.EventHandler(this.VoetbalverenigingForm_Load);
             this.gbTeams.ResumeLayout(false);
             this.gbTeams.PerformLayout();
             this.gbWedstrijdenTeam.ResumeLayout(false);
@@ -322,6 +345,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nuDoelpuntenThuis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nuDoelpuntenUit)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -352,6 +376,8 @@
         private System.Windows.Forms.NumericUpDown nuDoelpuntenUit;
         private System.Windows.Forms.ComboBox cbUit;
         private System.Windows.Forms.ComboBox cbThuis;
+        private System.Windows.Forms.TextBox tbStand;
+        private System.Windows.Forms.Label label1;
     }
 }
 
