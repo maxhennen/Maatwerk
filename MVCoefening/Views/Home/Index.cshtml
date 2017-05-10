@@ -1,0 +1,14 @@
+﻿@using MVCoefening.Models
+@model Huis
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@foreach (Persoon persoon in @Model.Personen())
+{
+    <h4>@persoon.Naam</h4>
+}
+<a href="@Url.Action("About","Home")">About</a>
+
+
